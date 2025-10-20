@@ -66,15 +66,23 @@ $$ CV_{ij} = \text{Surface}_i \times \text{Charges}_j $$
 
 The model is subject to the following constraints:
 
-1.  **One Scenario per Greenhouse**: Each greenhouse can be assigned exactly one scenario and one starting week.
-    $$ \sum_{j,k} X_{ijk} = 1 \quad \forall i \in \{1, ..., 24\} $$
+1.  **One Scenario per Greenhouse**  
+Each greenhouse can be assigned exactly one scenario and one starting week:
+
+$$
+\sum_{j,k} X_{ijk} = 1 \quad \forall i \in \{1, \ldots, 24\}
+$$
 
 2.  **Sector-Specific Constraints**: Certain scenarios are restricted to specific sectors.
     - Scenarios 4 and 5 can **only** be planted in **Sector 6**.
     - Scenarios 12, 13, 14, and 18 can **only** be planted in **Sector 5** and in greenhouses with a surface area of **less than 2.87 hectares**.
 
-3.  **Production Limit (Optional)**: Total production across all greenhouses can be capped at a predefined threshold to simulate limited market demand.
-    $$ \sum_{i,j,k} (\text{TotalProduction}_{ijk}) \cdot X_{ijk} \leq \text{Threshold} $$
+3.  **Production Limit (Optional)**  
+Total production across all greenhouses can be capped at a predefined threshold to simulate limited market demand:
+
+$$
+\sum_{i,j,k} (\text{TotalProduction}_{ijk}) \cdot X_{ijk} \leq \text{Threshold}
+$$
 
 4.  **Scenario Consistency within Sectors (Optional)**: To streamline operations, all greenhouses within the same sector can be constrained to use the same scenario.
 
@@ -91,7 +99,7 @@ The analysis is based on four key data files, which should be placed in a `data/
 
 ---
 
-## 📊 Results & Interpretation
+##  Results & Interpretation
 
 ### Unconstrained Optimization
 
@@ -114,5 +122,6 @@ When a production limit is introduced (e.g., 600,000 kg), the model adjusts its 
 ##  Conclusion
 
 This project successfully demonstrates how mathematical optimization can be applied to complex agricultural planning problems. By modeling production scenarios, costs, prices, and operational constraints, we developed a powerful tool that provides clear, actionable recommendations for maximizing profitability.
+
 
 The model's flexibility, allowing for the inclusion of constraints like production caps and sector-wide consistency, makes it a robust decision-support system for modern farming operations.
